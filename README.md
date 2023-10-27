@@ -1,8 +1,6 @@
-# TheSmartTerrarium
-IOT Project for AU Course Software Technology Internet Of Things. Smart Terrarium to monitor temperature and humidity in a terrarium. Should be plug-and-play with hardware. 
+${toc}
 
-## The Idea
-// ADD IMAGE of architecture
+# The Idea
 
 # First steps
 Creating a script and running it. 
@@ -14,6 +12,9 @@ First go into the repo:
 
 intall packages:
 `npm install`
+`npm install casual`
+`npm install -g typescript`
+
 
 compile typescript to javascript
 `tsc`
