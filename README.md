@@ -1,10 +1,7 @@
 ${toc}
 
 # The Idea
-
-
-![Screenshot 2023-10-27 at 10.43.52.png](:/24ee2a2239dd410db358538702ddc587)
-
+// insert image
 
 # First steps
 Creating a script and running it. 
@@ -93,4 +90,4 @@ To Monitor Published Messages:
 
 ## Result
 
-
+// insert image
