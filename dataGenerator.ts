@@ -1,8 +1,16 @@
 import * as casual from 'casual';
 
+let temperature = casual.integer(20, 35); // Initial temperature  
+let moisture = casual.integer(50, 100); // Initial moisture  
+
 setInterval(() => {
-    const temperature = casual.integer(20, 35); // range for terrarium temperature in Celsius  
-    const moisture = casual.integer(50, 100); // range for terrarium moisture in percentage  
+    // Determine if the temperature and moisture should go up or down  
+    let tempChange = casual.integer(-1, 1);
+    let moistureChange = casual.integer(-1, 1);
+
+    // Update temperature and moisture  
+    temperature = Math.max(20, Math.min(35, temperature + tempChange));
+    moisture = Math.max(50, Math.min(100, moisture + moistureChange));
 
     const data = {
         temperature: temperature,
@@ -10,4 +18,4 @@ setInterval(() => {
     };
 
     console.log(JSON.stringify(data));
-}, 10000);  
+}, 100);  
