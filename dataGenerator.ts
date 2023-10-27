@@ -1,4 +1,24 @@
 import * as casual from 'casual';
+import * as mqtt from 'mqtt';
+
+const client = mqtt.connect('mqtt://localhost:1883');
+
+client.on('connect', () => {
+    console.log('Connected to the MQTT broker.');
+
+    // Subscribe to a topic (Optional, if you want to receive messages)
+    client.subscribe('terrariumData', (err) => {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('Subscribed to the topic terrariumData.');
+        }
+    });
+});
+
+client.on('message', (topic, message) => {
+    console.log(`Received message from topic ${topic}: ${message.toString()}`);
+});
 
 let temperature = casual.integer(20, 35); // Initial temperature  
 let moisture = casual.integer(50, 100); // Initial moisture  
@@ -18,4 +38,7 @@ setInterval(() => {
     };
 
     console.log(JSON.stringify(data));
-}, 100);  
+
+    // Publish the updated data to the MQTT broker
+    client.publish('terrariumData', JSON.stringify(data));
+}, 100);

@@ -1,7 +1,7 @@
 {
   "name": "iot",
   "version": "1.0.0",
-  "description": "",
+  "description": "IOT Project for AU Course Software Technology Internet Of Things. Smart Terrarium to monitor temperature and humidity in a terrarium. Should be plug-and-play with hardware.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "casual": "^1.6.2"
-  }
+  },
+  "devDependencies": {}
 }
