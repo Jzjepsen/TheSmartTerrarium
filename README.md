@@ -34,7 +34,7 @@ Run the Mosquitto MQTT broker:
 `mosquitto`
 
 ### 2. Updated TypeScript Script
-The updated TypeScript Script is available in the file 
+The updated TypeScript Script is available in the file dataGenerator.ts
 
 ### 3. Compile and Run the TypeScript Script
 Use the following commands:
