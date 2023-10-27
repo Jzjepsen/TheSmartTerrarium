@@ -1,5 +1,6 @@
 # The Idea
-// insert image
+<img width="661" alt="ProjectIdea" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/136e2eac-dc5a-46a3-b3fe-6edf5a07e726">
+
 
 # First steps
 Creating a script and running it. 
@@ -87,5 +88,10 @@ To Monitor Published Messages:
 
 
 ## Result
+
+<img width="674" alt="resultVer1" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/b935f32c-b63f-4610-9cb2-31a1dc15da07">
+
+
+
 
 // insert image
