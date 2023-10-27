@@ -52,7 +52,3 @@ To Monitor Published Messages:
 
 <img width="674" alt="resultVer1" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/b935f32c-b63f-4610-9cb2-31a1dc15da07">
 
-
-
-
-// insert image
