@@ -1,5 +1,3 @@
-${toc}
-
 # The Idea
 // insert image
 
