@@ -21,20 +21,20 @@ client.on('message', (topic, message) => {
 });
 
 let temperature = casual.integer(20, 35); // Initial temperature  
-let moisture = casual.integer(50, 100); // Initial moisture  
+let humidity = casual.integer(50, 100); // Initial humidity  
 
 setInterval(() => {
-    // Determine if the temperature and moisture should go up or down  
+    // Determine if the temperature and humidity should go up or down  
     let tempChange = casual.integer(-1, 1);
-    let moistureChange = casual.integer(-1, 1);
+    let humidityChange = casual.integer(-1, 1);
 
-    // Update temperature and moisture  
+    // Update temperature and humidity  
     temperature = Math.max(20, Math.min(35, temperature + tempChange));
-    moisture = Math.max(50, Math.min(100, moisture + moistureChange));
+    humidity = Math.max(50, Math.min(100, humidity + humidityChange));
 
     const data = {
         temperature: temperature,
-        moisture: moisture
+        humidity: humidity
     };
 
     console.log(JSON.stringify(data));
