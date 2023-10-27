@@ -92,5 +92,5 @@ To Monitor Published Messages:
 
 
 ## Result
-![Screenshot 2023-10-27 at 11.37.21.png](:/5203160d86eb4de6b8a8a782a526e954)
+
 
