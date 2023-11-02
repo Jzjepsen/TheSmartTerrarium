@@ -1,6 +1,12 @@
 import * as casual from 'casual';
 import * as mqtt from 'mqtt';
 
+const TEMP_MIN = 0;  
+const TEMP_MAX = 50; 
+
+const HUMIDITY_MIN = 20;   
+const HUMIDITY_MAX = 100; 
+
 interface ITerrariumData {
     temperature: number;
     humidity: number;
@@ -24,8 +30,8 @@ client.on('message', (topic, message) => {
     console.log(`Received message from topic ${topic}: ${message.toString()}`);
 });
 
-let temperature = casual.integer(20, 35); // Initial temperature    
-let humidity = casual.integer(50, 100); // Initial humidity    
+let temperature = casual.integer(TEMP_MIN, TEMP_MAX);
+let humidity = casual.integer(HUMIDITY_MIN, HUMIDITY_MAX);
 
 setInterval(() => {
     let tempChange = casual.integer(-1, 1);
