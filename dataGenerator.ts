@@ -25,7 +25,7 @@ client.on('message', (topic, message) => {
 });
 
 let temperature = casual.integer(20, 35); // Initial temperature    
-let humidity = casual.integer(50, 100); // Initial humidity    
+let humidity = casual.integer(60, 90); // Initial humidity    
 
 setInterval(() => {
     let tempChange = casual.integer(-1, 1);
