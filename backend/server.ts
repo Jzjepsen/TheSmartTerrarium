@@ -1,40 +1,27 @@
-import express from 'express';
-import * as mqtt from 'mqtt';
-import prettyjson from 'prettyjson';
+import express = require('express');
+import { connect, getClient } from './db';
+import * as prettyjson from 'prettyjson';
 
 const app = express();
 const port = 3100;
 
-let terrariumData: any[] = []; // This array will store the terrarium data temporarily  
+app.get('/', async (req, res) => {
+    try {
+        await connect();
+        console.log("Connected to MongoDB");
+        const dbClient = getClient();
+        const dbo = dbClient.db("TerrariumData");
 
-app.get('/', (req, res) => {
-    res.send(`<pre>${prettyjson.render(terrariumData)}</pre>`);
+        const query = { deviceId: "device2" };
+        const result = await dbo.collection("Data").findOne(query);
+        res.send(`<pre>${JSON.stringify(result, null, 2)}</pre>`);
+        dbClient.close();
+    } catch (error) {
+        console.error('Error:', error);
+        res.send('Error occurred while fetching data');
+    }
 });
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-});
-
-// MQTT client setup  
-const client = mqtt.connect('mqtt://localhost:1883');
-
-client.on('connect', () => {
-    console.log('Connected to the MQTT broker.');
-
-    client.subscribe('terrariumData', (err: any) => {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log('Subscribed to the topic terrariumData.');
-        }
-    });
-});
-
-client.on('message', (topic: string, message: Buffer) => {
-    let messageStr = message.toString();
-    console.log(`Received message from topic ${topic}: ${messageStr}`);
-    if (topic === 'terrariumData') {
-        const data = JSON.parse(messageStr);
-        terrariumData.push(data); // Add the received data to the array  
-    }
 });  

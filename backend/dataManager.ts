@@ -1,35 +1,34 @@
-/*
 var mqtt = require('mqtt');
-var mongodb = require('mongodb');
+var { connect, getClient } = require('./db'); // db is our mongo connection module  
 
-var MongoClient = mongodb.MongoClient;
-var url = 'mongodb://localhost:27017/mydb'; // replace mydb with your database name  
+var client = mqtt.connect('mqtt://localhost:1883'); // replace with your mqtt broker details      
 
-var client = mqtt.connect('mqtt://localhost:1883'); // replace with your mqtt broker details  
-
-client.on('connect', function () {
+client.on('connect', async function () {
     console.log('connected to mqtt broker');
-    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
-        if (err) throw err;
+    try {
+        await connect();
         console.log("connected to mongoDB");
-        var dbo = db.db("mydb");
+        var dbClient = getClient();
+        var dbo = dbClient.db("TerrariumData");
 
-        client.subscribe('topic', function (err) {  // replace 'topic' with your topic  
+        client.subscribe('terrariumData', function (err: any) {  // replace 'topic' with your topic      
             if (!err) {
-                client.on('message', function (topic, message) {
-                    // message is Buffer, convert to string  
+                client.on('message', function (topic: any, message: { toString: () => any; }) {
+                    // message is Buffer, convert to string      
                     var msg = message.toString();
                     console.log(msg);
                     var myobj = JSON.parse(msg);
-                    dbo.collection("mqttData").insertOne(myobj, function (err, res) { // replace "mqttData" with your collection  
+                    var query = { deviceId: "device2" };
+                    var newvalues = { $set: myobj };
+                    dbo.collection("Data").updateOne(query, newvalues, function (err: any, res: any) {
                         if (err) throw err;
-                        console.log("data inserted");
-                        db.close();
+                        console.log("data updated");
+                        dbClient.close();
                     });
                 })
             }
         })
-    });
+    } catch (error) {
+        console.error('Error connecting to MongoDB Atlas:', error);
+    }
 });  
-
-*/

@@ -1,11 +1,11 @@
 import * as casual from 'casual';
 import * as mqtt from 'mqtt';
 
-const TEMP_MIN = 0;  
-const TEMP_MAX = 50; 
+const TEMP_MIN = 0;
+const TEMP_MAX = 50;
 
-const HUMIDITY_MIN = 0;   
-const HUMIDITY_MAX = 100; 
+const HUMIDITY_MIN = 0;
+const HUMIDITY_MAX = 100;
 
 interface ITerrariumData {
     temperature: number;
@@ -48,4 +48,4 @@ setInterval(() => {
     console.log(JSON.stringify(data));
 
     client.publish('terrariumData', JSON.stringify(data));
-}, 100);  
+}, 10000);  

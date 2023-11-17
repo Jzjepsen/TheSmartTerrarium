@@ -36,38 +36,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var db_1 = require("./db");
-var app = express();
-var port = 3100;
-app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var dbClient, dbo, query, result, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, (0, db_1.connect)()];
-            case 1:
-                _a.sent();
-                console.log("Connected to MongoDB");
-                dbClient = (0, db_1.getClient)();
-                dbo = dbClient.db("TerrariumData");
-                query = { deviceId: "device2" };
-                return [4 /*yield*/, dbo.collection("Data").findOne(query)];
-            case 2:
-                result = _a.sent();
-                res.send("<pre>".concat(JSON.stringify(result, null, 2), "</pre>"));
-                dbClient.close();
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                console.error('Error:', error_1);
-                res.send('Error occurred while fetching data');
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
+exports.getClient = exports.connect = void 0;
+var mongodb_1 = require("mongodb");
+var uri = 'mongodb+srv://TST-user:TSTPW2023@thesmartterrarium.jrqzew4.mongodb.net/';
+var client = new mongodb_1.MongoClient(uri);
+function connect() {
+    return __awaiter(this, void 0, void 0, function () {
+        var error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, client.connect()];
+                case 1:
+                    _a.sent();
+                    console.log('Connected to MongoDB Atlas');
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_1 = _a.sent();
+                    console.log('Error connecting to MongoDB Atlas:', error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
     });
-}); });
-app.listen(port, function () {
-    console.log("Server is running on http://localhost:".concat(port));
-});
+}
+exports.connect = connect;
+function getClient() {
+    return client;
+}
+exports.getClient = getClient;
