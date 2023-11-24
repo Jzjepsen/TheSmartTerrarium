@@ -52,3 +52,25 @@ To Monitor Published Messages:
 
 <img width="674" alt="resultVer1" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/b935f32c-b63f-4610-9cb2-31a1dc15da07">
 
+# Starting the backend
+After having created a backend ind MongoDB ( or similar), get the backend running. 
+
+## Step-by-step
+Install MongoDB (first enter the backend folder `cd backend`)
+`npm install mongodb`
+
+Compile db.ts and dataManager.ts
+`tsc db.ts`
+`tsc dataManager.ts`
+
+Run the scripts (.js files) 
+`node db.js`
+`node dataManager.js`
+
+## Result
+<img width="701" alt="Screenshot 2023-11-24 at 11 55 51" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/607423a7-d9b7-4116-b9c6-67866717ba24">
+
+
+
+
+
