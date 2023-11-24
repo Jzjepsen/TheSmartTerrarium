@@ -67,7 +67,29 @@ Run the scripts (.js files)
 `node dataManager.js`
 
 ## Result
-<img width="701" alt="Screenshot 2023-11-24 at 11 55 51" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/607423a7-d9b7-4116-b9c6-67866717ba24">
+<img width="640" alt="Screenshot 2023-11-24 at 12 00 00" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/6aedb0f8-15ec-4428-b54f-9a31dfb1fba3">
+
+# Starting Server (from backend folder)
+Compile server.ts
+`tsc server.ts`
+
+Run server.js
+`node server.js`
+
+## Results
+In the terminal:
+<img width="565" alt="Screenshot 2023-11-24 at 12 02 42" src="https://github.com/Jzjepsen/TheSmartTerrarium/assets/95351040/f2a2e571-2080-404c-98ab-33ef915520ce">
+
+In the browser, go to http://localhost:3100, you should see something like this: 
+```
+{
+  "_id": "654e2b29b54f8b6f982cc920",
+  "deviceId": "device2",
+  "timestamp": "2023-11-10T13:07:53.346Z",
+  "temperature": 27,
+  "humidity": 63
+}
+```
 
 
 
