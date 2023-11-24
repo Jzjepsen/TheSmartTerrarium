@@ -31,7 +31,7 @@ Integrate MQTT functionality into a TypeScript script to send simulated terrariu
 ### 1. Initialization of the MQTT Broker
 Run the Mosquitto MQTT broker:
 
-`mosquitto`
+` brew services start mosquitto`
 
 ### 2. Updated TypeScript Script
 The updated TypeScript Script is available in the file dataGenerator.ts
