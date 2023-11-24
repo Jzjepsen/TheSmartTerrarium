@@ -64,7 +64,6 @@ Compile db.ts and dataManager.ts
 `tsc dataManager.ts`
 
 Run the scripts (.js files) 
-`node db.js`
 `node dataManager.js`
 
 ## Result
