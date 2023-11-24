@@ -17,7 +17,7 @@ intall packages:
 
 
 compile typescript to javascript
-`tsc`
+`tsc dataGenerator.ts`
 
 run file:
 `node dataGenerator.js`
