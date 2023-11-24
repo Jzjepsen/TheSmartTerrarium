@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var casual = require("casual");
+var casual = require('casual');
 var mqtt = require("mqtt");
 var TEMP_MIN = 0;
 var TEMP_MAX = 50;
@@ -28,9 +28,11 @@ setInterval(function () {
     var humidityChange = casual.integer(-1, 1);
     temperature = Math.max(20, Math.min(35, temperature + tempChange));
     humidity = Math.max(60, Math.min(90, humidity + humidityChange));
+    var timestamp = new Date().toISOString();
     var data = {
         temperature: temperature,
-        humidity: humidity
+        humidity: humidity,
+        timestamp: timestamp
     };
     console.log(JSON.stringify(data));
     client.publish('terrariumData', JSON.stringify(data));

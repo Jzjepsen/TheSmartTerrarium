@@ -1,4 +1,4 @@
-import * as casual from 'casual';
+const casual = require('casual');
 import * as mqtt from 'mqtt';
 
 const TEMP_MIN = 0;
@@ -10,6 +10,7 @@ const HUMIDITY_MAX = 100;
 interface ITerrariumData {
     temperature: number;
     humidity: number;
+    timestamp: string;
 }
 
 const client = mqtt.connect('mqtt://localhost:1883');
@@ -40,9 +41,12 @@ setInterval(() => {
     temperature = Math.max(20, Math.min(35, temperature + tempChange));
     humidity = Math.max(60, Math.min(90, humidity + humidityChange));
 
+    const timestamp = new Date().toISOString();
+    
     const data: ITerrariumData = {
         temperature: temperature,
-        humidity: humidity
+        humidity: humidity,
+        timestamp: timestamp
     };
 
     console.log(JSON.stringify(data));
