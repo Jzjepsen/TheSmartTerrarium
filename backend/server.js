@@ -56,7 +56,7 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
                 return [4 /*yield*/, dbo.collection("Data").findOne(query)];
             case 2:
                 result = _a.sent();
-                res.send("<pre>".concat(JSON.stringify(result, null, 2), "</pre>"));
+                res.send(result);
                 dbClient.close();
                 return [3 /*break*/, 4];
             case 3:

@@ -14,7 +14,7 @@ app.get('/', async (req, res) => {
 
         const query = { deviceId: "device2" };
         const result = await dbo.collection("Data").findOne(query);
-        res.send(`<pre>${JSON.stringify(result, null, 2)}</pre>`);
+        res.send(result);
         dbClient.close();
     } catch (error) {
         console.error('Error:', error);
